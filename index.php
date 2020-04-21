@@ -20,13 +20,13 @@
 
       <form class="form-inline">
         <div class="form-group mb-2 mr-sm-2">
-          <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
-          <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+          <label class="sr-only" for="username">Username</label>
+          <input type="text" class="form-control" id="username" value="" placeholder="Username">
         </div>
 
         <div class="form-group mb-2 mr-sm-2">
-          <label class="sr-only" for="exampleInputPassword">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+          <label class="sr-only" for="password">Password</label>
+          <input type="password" class="form-control" id="password" value="" placeholder="Password">
         </div>
 
         <button type="submit" class="btn btn-primary mb-2">Sign In</button>
