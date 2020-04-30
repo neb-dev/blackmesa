@@ -7,6 +7,21 @@
   if($conn -> connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
+
+  if(isset($_POST['submit'])) {
+    $formUsername = $_POST["formUsername"];
+    $formPassword = $_POST["formPassword"];
+
+    $sql = "SELECT username FROM user WHERE username = '$formUsername' AND password = '$formPassword'";
+    echo $sql;
+    $res = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_array($res)) {
+      echo "<p>";
+      echo $row["username"];
+      echo "</p>";
+    }
+  }
+  $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,23 +35,23 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="http://blackmesa/">Black Mesa Research Facility</a>
+      <a class="navbar-brand" href="http://blackmesa/index.php">Black Mesa Research Facility</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <form class="form-inline">
+      <form class="form-inline" method="POST" action="http://blackmesa/index.php">
         <div class="form-group mb-2 mr-sm-2">
-          <label class="sr-only" for="username">Username</label>
-          <input type="text" class="form-control" id="username" value="" placeholder="Username">
+          <label class="sr-only" for="formUsername">Username</label>
+          <input type="text" class="form-control" id="formUsername" value="" placeholder="Username">
         </div>
 
         <div class="form-group mb-2 mr-sm-2">
-          <label class="sr-only" for="password">Password</label>
-          <input type="password" class="form-control" id="password" value="" placeholder="Password">
+          <label class="sr-only" for="formPassword">Password</label>
+          <input type="password" class="form-control" id="formPassword" value="" placeholder="Password">
         </div>
 
-        <button type="submit" class="btn btn-primary mb-2">Sign In</button>
+        <button type="submit" name="submit" class="btn btn-primary mb-2">Sign In</button>
       </form>
     </div>
   </nav>
