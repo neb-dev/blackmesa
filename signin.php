@@ -1,25 +1,25 @@
 <?php
   $server = "localhost";
-  $username = "blackmesa";
-  $password = "pottop77";
-
+  $username = "root";
+  $password = "";
+  
   $conn = new mysqli($server, $username, $password);
-  if($conn -> connect_error) {
+  if($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+  } else {
+    echo "Connected!";
   }
 
-  if(isset($_POST['submit'])) {
-    $formUsername = $_POST["formUsername"];
-    $formPassword = $_POST["formPassword"];
+  // $result = $conn->query('SHOW databases');
+  // foreach( $result as $row ) {
+  //   echo join(', ', $row), "<br />\r\n";
+  // }
+  $sql = "SELECT username FROM 'user'";
+  $result = $conn->query($sql) or die($conn->error);
 
-    $sql = "SELECT username FROM user WHERE username = '$formUsername' AND password = '$formPassword'";
-    echo $sql;
-    $res = mysqli_query($conn, $sql);
-    while($row = mysqli_fetch_array($res)) {
-      echo "<p>";
-      echo $row["username"];
-      echo "</p>";
-    }
+  while($row = $result->fetch_assoc()) {
+    echo "Username: " . $row["username"] . " Password: " . $row["password"];
   }
+
   $conn->close();
 ?>
