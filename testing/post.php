@@ -2,7 +2,7 @@
 
 $data = array(
     "username" => "neb",
-    "password" => "password"
+    "password" => "password",
     "form" => "submit"
 );
 
@@ -14,6 +14,8 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, "cookie.txt");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $res = curl_exec($ch);
+
+var_dump($res);
 
 curl_close($ch);
 
