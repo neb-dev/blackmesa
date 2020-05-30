@@ -32,7 +32,6 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
 echo curl_exec($ch);
 
-// error checking
 if(curl_errno($ch)){
     throw new Exception(curl_error($ch));
 }
